@@ -1,0 +1,40 @@
+{
+  "name": "icevw",
+  "version": "0.0.1",
+  "description": "Aplicación que permite utilizar los recursos del pc cliente desde la web",
+  "keywords": [
+    "plugin",
+    "icevw",
+	"webplugin",
+	"vw"
+  ],
+  "main": "index.coffee",
+  "dependencies": {
+    "decompress-zip": ">=0.2.0",
+    "fs-extra": ">=0.26.2",
+    "md5": ">=2.0.0",
+    "request": ">=2.65.0",
+	"uniqid": ">=1.0.0",
+	"vw-session-file-store": ">0.0.24"
+  },
+  "author": {
+    "name": "James Suárez",
+	"email":"xtreme.maicolxt94@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/voxsoftware/icevw/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/voxsoftware/icevw"
+  },
+  "homepage": "https://github.com/voxsoftware/icevw",
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "James Suárez",
+      "email": "xtreme.maicolxt94@gmail.com"
+    }
+  ],
+  "directories": {}
+}

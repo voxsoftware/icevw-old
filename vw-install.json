@@ -1,0 +1,21 @@
+{
+    "bin":{
+        "icevw": {
+			"onstart":true,
+            "menudir": "VoxSoftware",
+            "icon":{
+                "register": true,
+                "icon": "voxsoftware-icevw.png",
+                "size": "96",
+                "winicon": "icevw.ico",
+                "vendor":true
+            },
+            "categories": ["Software", "Programming", "Web", "Internet"],
+            "name": "IceVW",
+            "id": "voxsoftware.icevw",
+            "comment": "Utilice recursos del equipo desde la web",
+            "mimetype": [],
+            "exec":"index.coffee"
+        }
+    }
+}
