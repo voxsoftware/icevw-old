@@ -31,7 +31,7 @@ En poco tiempo se estará poniendo ejemplos concretos de como usar ICEVW desde s
 
 #### Instalación
 
-Para instalar ICEVW debe instalar VW. En Windows abra una ventana del cmd con permisos de administrador. En linux puede usar el comando sudo:
+Para instalar ICEVW debe instalar VW (https://www.npmjs.com/package/vw). En Windows abra una ventana del cmd con permisos de administrador. En linux puede usar el comando sudo:
 
 
 En Windows utilice vw-cmd
