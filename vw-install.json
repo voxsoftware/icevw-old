@@ -2,6 +2,7 @@
     "bin":{
         "icevw": {
 			"onstart":true,
+			"staronfinish":true,
             "menudir": "VoxSoftware",
             "icon":{
                 "register": true,
@@ -10,7 +11,7 @@
                 "winicon": "icevw.ico",
                 "vendor":true
             },
-            "categories": ["Software", "Programming", "Web", "Internet"],
+            "categories": ["Programming", "Network", "Application"],
             "name": "IceVW",
             "id": "voxsoftware.icevw",
             "comment": "Utilice recursos del equipo desde la web",

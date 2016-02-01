@@ -1,3 +1,7 @@
+/*
+@author James Suárez
+*/
+
 // James! 29-01-2016
 // Archivo cliente iceVw
 // Necesita jQuery
@@ -97,14 +101,14 @@ $(function(){
 		this.callbacks={};
 		var self=this;
 		window.addEventListener("message",function(event){
-			console.log(event);
+			//console.log(event);
 			if(event.origin==url){
 				var data=JSON.parse(event.data);
 				if(data.type=="icevw.notauthorized"){
 					var er=new Error(data.error);
 					er.type=data.type;
 					self.iframe.hide();
-					return this.callback(er);
+					return self.callback(er);
 				}
 				else if(data.type=="icevw.adquireerror"){
 					var er=data.error;
@@ -113,13 +117,13 @@ $(function(){
 					}
 					er.type=data.type;
 					self.iframe.hide();
-					return this.callback(er);
+					return self.callback(er);
 				}
 				else if(data.type=="icevw.adquiredandloaded"){
 					self.iframe.hide();
 
 					hab();
-					return this.callback(undefined, data.data);
+					return self.callback(undefined, data.data);
 				}
 			}
 		});
@@ -139,6 +143,10 @@ $(function(){
 
 		return $.ajax({
 			url:url,
+			/*
+		   	xhrFields: {
+		    	withCredentials: true
+		  	},*/
 			type:method,
 			data:data,
 			processData:literal?false:true,
@@ -178,6 +186,8 @@ $(function(){
 		var self=this;
 		return function(){
 			var args= Array.prototype.slice.call(arguments, 0, arguments.length-1);
+			args=JSON.stringify(args);
+			console.log(args);
 			var callback= arguments[arguments.length-1];
 			icevw.post(url+"/api/call", {
 				"method":self.name,
@@ -198,40 +208,44 @@ $(function(){
 	icevw.prototype.adquire= function(pars,callback){
 		// app=> path:string, app:string, url:string, uid:string
 		var self= this;
+		/*
 		icevw.post(self.url + "/api/enabled",{
 			"domain":location.origin
 		},function(){
 
-			var url= pars.url||"";
-			if(url.substring(0,7)!="http://"&&url.substring(0,8)!="https://"&&url.substring(0,5)!="ws://"){
-				url=location.origin + "/"+url;
-			}
-			var spars=[];
-			spars.push("domain=" + encodeURIComponent(location.origin));
-			spars.push("&");
-			spars.push("url=" + encodeURIComponent(url));
-			spars.push("&");
-			spars.push("uid=" + self.uid);
-			spars.push("&");
-			spars.push("app=" + pars.app);
+			setTimeout(function(){*/
+				var url= pars.url||"";
+				if(url.substring(0,7)!="http://"&&url.substring(0,8)!="https://"&&url.substring(0,5)!="ws://"){
+					url=location.origin + "/"+url;
+				}
+				var spars=[];
+				spars.push("domain=" + encodeURIComponent(location.origin));
+				spars.push("&");
+				spars.push("url=" + encodeURIComponent(url));
+				spars.push("&");
+				spars.push("uid=" + self.uid);
+				spars.push("&");
+				spars.push("app=" + pars.app);
 
 
-			var iframe= self.iframe;
-			iframe.attr("src",self.url+"/require?"+spars.join(""));
-			iframe.css("width","100%");
-			iframe.css("height","100%");
-			iframe.css("position","fixed");
-			iframe.css("top","0");
-			iframe.css("left","0");
-			iframe.css("z-index","99999");
-			iframe.show();
-			this.callback=callback;
+				var iframe= self.iframe;
+				iframe.attr("src",self.url+"/require?"+spars.join(""));
+				iframe.css("width","100%");
+				iframe.css("height","100%");
+				iframe.css("position","fixed");
+				iframe.css("top","0");
+				iframe.css("left","0");
+				iframe.css("z-index","99999");
+				iframe.show();
+				this.callback=callback;
+		/*)	},200);
+
 
 		}, function(er){
 			if(er){
 				return callback(er);
 			}
-		});
+		});*/
 	}
 
 

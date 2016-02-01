@@ -14,11 +14,12 @@ async.setevalfunction (str)->
 router.all "/api/version", (req,res)->
 	jsonresponse res, require "./version"
 
+# ESto no sirve debido a restricciones de ajax sobre web
 router.all "/api/enable", (req,res)->
 	adquire=require "./modules/adquire"
 	adquire.enable req,res,jsonresponse.func(res)
 
-
+# ESto no sirve debido a restricciones de ajax sobre web
 router.all "/api/load", (req,res)->
 	reqapp=require "./modules/requireapp"
 	reqapp.load req,res,jsonresponse.func(res)
@@ -27,7 +28,7 @@ router.all "/api/call", (req,res)->
 	child=require "./modules/child"
 	child.apicall req,res,jsonresponse.func(res)
 
-
+# ESto no sirve debido a restricciones de ajax sobre web
 router.all "/api/enabled", (req,res)->
 	adquire=require "./modules/adquire"
 	adquire.enabled req,res,jsonresponse.func(res)

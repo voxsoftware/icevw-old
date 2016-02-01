@@ -10,6 +10,7 @@ class Icevw
 	## LOs métodos son siempre asíncronos ...
 	execute: (cmd)->
 		name=cmd.method
+
 		self=this
 		[objname,method]=name.split(".")
 		obj2=@objs[objname]
@@ -18,11 +19,13 @@ class Icevw
 		try
 			args= cmd.arguments or []
 			m=obj2[method]
+			
 			if m.async
 				args.push (er,data)->
 					if er
 						return self.write er,null,cmd
 					return self.write null,data,cmd
+
 
 				m.apply obj2, args
 			else

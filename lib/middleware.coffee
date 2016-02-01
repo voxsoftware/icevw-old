@@ -32,5 +32,8 @@ SES = session
 	}
 
 
-
+router.use (req,res,next)->
+	res.setHeader "Access-Control-Allow-Origin", "*"
+	res.setHeader "Allow-Access-Control-Credentials", true
+	next()
 router.use SES

@@ -17,6 +17,7 @@ if not fs.existsSync path
 class Requireapp
 
 	download: (app,url,callback)->
+		c=undefined
 		try
 
 
@@ -24,28 +25,57 @@ class Requireapp
 			tpath= path + "/#{id}"
 			file= path + "/#{id}.zip"
 			rpath= path + "/#{app}"
+
+			c=(er,d)->
+				if er
+
+					try
+						fs.removeSync tpath
+					catch error
+						vw.warning error
+
+					try
+						fs.unlinkSync file
+					catch error
+						vw.warning error
+
+					return callback er
+				else
+					try
+						fs.unlinkSync file
+					catch error
+						vw.warning error
+
+					
+					fs.move tpath,rpath,(er)->
+						return callback er if er
+						return callback undefined, d
+
+
 			vw.log url
 			r=request.get { url: url, timeout: 60000}, (er,response,body)->
-				return callback er if er
+				return c er if er
 
 				if response.statusCode==404
-					return callback new Error("La url de la aplicación no es válida")
+					return c new Error("La url de la aplicación no es válida")
 
 				# Descomprimir ....
 				unzipper = new decompress(file)
 				unzipper.on "error", (er)->
-					return callback er
+					return c er
 
 				unzipper.on 'extract', (log)->
 					vw.log rpath
-					return callback undefined, rpath
+					return c undefined, rpath
 
 				unzipper.extract
-					"path":rpath
+					"path":tpath
 
 			r.pipe fs.createWriteStream(file)
 
 		catch e
+			if c
+				return c e
 			return callback e
 
 

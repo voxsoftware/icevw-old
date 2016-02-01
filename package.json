@@ -1,40 +1,56 @@
 {
   "name": "icevw",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "Aplicación que permite utilizar los recursos del pc cliente desde la web",
   "keywords": [
     "plugin",
     "icevw",
-	"webplugin",
-	"vw"
+    "webplugin",
+    "vw"
   ],
-  "main": "index.coffee",
+  "main": "./index.coffee",
   "dependencies": {
     "decompress-zip": ">=0.2.0",
     "fs-extra": ">=0.26.2",
     "md5": ">=2.0.0",
     "request": ">=2.65.0",
-	"uniqid": ">=1.0.0",
-	"vw-session-file-store": ">0.0.24"
+    "uniqid": ">=1.0.0",
+    "express-session": ">=1.12.1",
+    "vw-session-file-store": ">=0.0.24"
   },
   "author": {
     "name": "James Suárez",
-	"email":"xtreme.maicolxt94@gmail.com"
+    "email": "xtreme.maicolxt94@gmail.com"
   },
   "bugs": {
     "url": "https://github.com/voxsoftware/icevw/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/voxsoftware/icevw"
+    "url": "git+https://github.com/voxsoftware/icevw.git"
   },
   "homepage": "https://github.com/voxsoftware/icevw",
   "license": "Apache-2.0",
   "maintainers": [
     {
-      "name": "James Suárez",
+      "name": "voxsoftware",
       "email": "xtreme.maicolxt94@gmail.com"
     }
   ],
-  "directories": {}
+  "directories": {},
+  "_id": "icevw@0.0.7",
+  "scripts": {},
+  "_shasum": "2c40ffd38e1c2866327ca7fd5cad5d12e7e0dba7",
+  "_from": "icevw@",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "name": "voxsoftware",
+    "email": "xtreme.maicolxt94@gmail.com"
+  },
+  "dist": {
+    "shasum": "2c40ffd38e1c2866327ca7fd5cad5d12e7e0dba7",
+    "tarball": "http://registry.npmjs.org/icevw/-/icevw-0.0.7.tgz"
+  },
+  "_resolved": "https://registry.npmjs.org/icevw/-/icevw-0.0.7.tgz"
 }

@@ -45,11 +45,12 @@ for i in [0...num]
 				<vox-bindevent vox-name='click'>
 					<script type='text/vox' lang='vox'>
 						(function(){
+							var parameters= {{JSON.stringify(pars)}};
 							JF.platform.formRequest($(".modal form"),function(data){
 								window.parent.postMessage(JSON.stringify({
 									"type":"icevw.adquired",
 									"data": data
-								}), location.origin);
+								}), parameters.domain);
 
 
 								$(".modal .load").show();
@@ -58,20 +59,19 @@ for i in [0...num]
 								$(".modal a").hide();
 								//#return;
 
-								// # Load app
-								var parameters= {{JSON.stringify(pars)}};
+								// # Load appvar parameters= {{JSON.stringify(pars)}};
 								JF.platform.post("/api/load", parameters, function(data){
 
 									window.parent.postMessage(JSON.stringify({
 										"type":"icevw.adquiredandloaded",
 										"data":data
-									}), location.origin);
+									}), parameters.domain);
 
 								},function(er){
 									window.parent.postMessage(JSON.stringify({
 										"type":"icevw.adquireerror",
 										"error":er
-									}), location.origin);
+									}), parameters.domain);
 								});
 
 
@@ -79,7 +79,7 @@ for i in [0...num]
 								window.parent.postMessage(JSON.stringify({
 									"type":"icevw.adquireerror",
 									"error":er
-								}), location.origin);
+								}), parameters.domain);
 							});
 						})
 					</script>
@@ -89,11 +89,12 @@ for i in [0...num]
 				<vox-bindevent vox-name='click'>
 					<script type='text/vox' lang='vox'>
 						(function(){
+							var parameters= {{JSON.stringify(pars)}};
 							$(".modal").voxmodal()[0].close();
 							window.parent.postMessage(JSON.stringify({
 								"type":"icevw.notauthorized",
 								"error":"No fue autorizado para ejecutar ICEVW"
-							}), location.origin);
+							}), parameters.domain);
 						})
 					</script>
 				</vox-bindevent>

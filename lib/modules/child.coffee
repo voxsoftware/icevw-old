@@ -62,7 +62,6 @@ class Child
 			self.datareceived=true
 
 			# process.openStdin()
-			vw.info "----------- HERE ...."
 			callback()
 		catch e
 			return callback e
@@ -120,7 +119,7 @@ Child.apicall= (req, res, callback)->
 		if not child.inited
 			Child.d[uid]=undefined
 			throw new Error("El uid de la aplicación no es válido")
-		child.execute data.method,data.arguments, callback
+		child.execute data.method, JSON.parse(data.arguments), callback
 	catch e
 		return callback e
 

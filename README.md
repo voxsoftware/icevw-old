@@ -8,6 +8,23 @@ ICEVW nace como la alternativa a estos plugins permitiendo realizar tareas direc
 
 
 
+## NOTA
+
+ICEVW está en una etapa muy prematura. Por favor pueden comunicarse con mi perfil de github para saber como funciona.
+Faltan algunos ajustes para hacerlo funcional.
+
+Quiero que se comuniquen conmigo, xtreme.maicolxt94@gmail.com deseo hacer lo siguiente y me gustaría recibir ayuda:
+
+1. Un mejor ícono de la aplicación. El nombre ICE de Hielo, y VW es por voxwebit la plataforma en la que está desarrollado (https://www.npmjs.com/package/vw)
+2. Necesito alguien que sepa de linux y pueda decirme como puedo fácilmente colocar que se ejecute automáticamente un programa al iniciar el sistema. Para Windows ya está.
+3. VW está basado en Electron, quisiera saber si alguien sabe como crear un ícono Tray con Electron. Esto es para cuando haga la etapa de un manejador GUI que aún no está.
+4. Modificar el archivo server/assets/icevw.js cuan sea necesario pues mi idea es que funcione en la mayoría de navegadores,si es posible desde IE8.
+5. Si alguien sabe como funciona los scheme handlers osea que desde el navegador se pudiera ejecutar algo como icevw://.... le agradezco mucho. Y que sea multiplataforma
+6. Quiero saber como puedo hacer que despúes de instalarse iceVW se ejecute automáticamente pero ojo, que sea detached, y segundo que aún si se usa sudo en Linux, se ejecute con el usuario normal.
+
+Les agradezco de antemano, algunas de estas he tratado de hacerlas por mi cuenta, pero no he podido lograr, además por mi falta de tiempo. Espero que con ayuda de buenos desarrolladores puedan colaborarme en las cosas que pido.
+
+
 #### Cómo usar
 
 En poco tiempo se estará poniendo ejemplos concretos de como usar ICEVW desde su página web.
@@ -19,7 +36,7 @@ Para instalar ICEVW debe instalar VW. En Windows abra una ventana del cmd con pe
 
 En Windows utilice vw-cmd
 ```sh
-vw-cmd --install icevw
+vw-cmd --g --install icevw
 ```
 
 En Unix coloque simplemente vw
@@ -42,7 +59,3 @@ En windows si quiere ver la traza de la aplicación debe usar:
 ```sh
 icevw-cmd
 ```
-
-
-#### NOTA
-En Windows los archivos binarios de la aplicación quedan en la carpeta del usuario, en sistemas Unix queda en la carpeta del usuario en el directorio bin

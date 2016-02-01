@@ -18,6 +18,7 @@ router.all "/test", (req,res)->
 
 
 router.all "/require", (req,res)->
+
 	data=if req.method=="GET" then req.query else req.body
 	if not data.domain
 		res.statusCode =500
@@ -25,11 +26,21 @@ router.all "/require", (req,res)->
 		res.end()
 		return
 	dominio=data.domain
+	vw.info dominio
+	vw.log req.session
 	if not req.session[dominio] or not req.session[dominio].md5hash
+		adquire=require "./modules/adquire"
+		adquire.enabled req,res, ()->
+			data.hash=req.session[dominio].md5hash
+			app.theme.section "requirir",req,res,data
+
+		###
 		res.statusCode =500
 		res.write "El API no ha sido llamado de manera correcta"
 		res.end()
 		return
+		###
 
-	data.hash=req.session[dominio].md5hash
-	app.theme.section "requirir",req,res,data
+	else
+		data.hash=req.session[dominio].md5hash
+		app.theme.section "requirir",req,res,data

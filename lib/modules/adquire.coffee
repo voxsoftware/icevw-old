@@ -30,15 +30,18 @@ class Adquire
 	enabled: (req,res,callback)->
 		try
 			data=if req.method=="GET" then req.query else req.body
+			vw.info "Dominio", data.domain
 			if not data.domain
 				throw new Error("Debe especificar el dominio")
 			if not req.session[data.domain]
 				req.session[data.domain]={}
 			hash=req.session[data.domain].hash= uniqid()
 			req.session[data.domain].md5hash= md5 hash
+			vw.log req.session
 			callback undefined,
 				"enabled":false,
 				"domain":data.domain
+				
 		catch e
 			return callback e
 
