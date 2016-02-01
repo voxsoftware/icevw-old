@@ -119,7 +119,7 @@ Child.apicall= (req, res, callback)->
 		if not child.inited
 			Child.d[uid]=undefined
 			throw new Error("El uid de la aplicación no es válido")
-		child.execute data.method, if data.arguments then JSON.parse(data.arguments) else null, callback
+		child.execute data.method, (if data.arguments then JSON.parse(data.arguments) else null), callback
 	catch e
 		return callback e
 
